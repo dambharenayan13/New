@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Student</title>
+</head>
+<body>
+    <p>First name </p>
+    <input type="text" id="firstN">
+    <p>Last Name</p>
+    <input type="text" id="lastN">
+    <p>Marks </p>
+    <input type="text" id="mark">
+
+    <button onclick="addStudent()">Add</button>
+    <pre>Student Details</pre>
+    <div id="student"></div>
+
+    <script>
+        const stud = {
+            FirstName: '',
+            LastName: '',
+            Marks : 0
+        };
+
+        function addStudent()
+        {
+           let first = document.getElementById('firstN').value.trim();
+           let last = document.getElementById('lastN').value.trim();
+           let marks = document.getElementById('mark').value.trim();
+
+           stud.FirstName=first;
+           stud.LastName=last;
+           stud.Marks=Number(marks);
+
+           document.getElementById('student').textContent=JSON.stringify(stud,null,2);
+        }
+    </script>
+    
+</body>
+</html>
+
+<!-- <script>
+    const Stud={
+        Firstname:'',
+        LastName:'',
+        Marks:0
+    };
+
+    function addStudent(){
+        let first=document.getElementById("FirstName").value.trim();
+        let last=document.getElementById("LastName").value.trim();
+        let marks=document.getElementById("marks").value.trim();
+
+        Stud.Firstname=first;
+        Stud.LastName=last;
+        Stud.Marks=Number(marks);
+
+        document.getElementById("Student").textContent=Json.stringify(Stud,null,2);
+    }
+</script> -->

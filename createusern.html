@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Username</title>
+</head>
+<body>
+    <p>First name : </p><input type="text" id="firstname" placeholder="Enter Firstname">
+    <p>Last name : </p><input type="text" id="lastname">
+    <p>Age : </p><input type="number" id="age"></br>
+    <br>
+
+    <div id="output">Username</div>
+    <button onclick="Genrerateusername()">create Username</button>
+    <script>
+        function Genrerateusername(){
+            let first = document.getElementById("firstname").value.trim();
+            let last = document.getElementById("lastname").value.trim();
+            let age = document.getElementById("age").value.trim();
+try{
+            if(first.length < 2 || last.length < 2 || age==="")
+               {
+                alert("Enter the valid data ");
+                return ;
+               }
+
+               first=first.substring(0,2).toLowerCase();
+               last=last.substring(0,2).toLowerCase();
+
+               let Username=first+last+age;
+               document.getElementById("output").textContent=Username;
+        }
+        catch(err){
+              alert("error");
+        }
+    }
+    </script>
+
+</body>
+</html>

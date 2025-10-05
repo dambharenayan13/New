@@ -1,0 +1,49 @@
+<html>
+<body>
+
+    Enter a Name: 
+    <input type="text" required id="t1">  <!-- predefined validation -->
+
+    <button onclick="validate()">Display</button>
+
+    <p id="p1">Data</p>
+
+<script>
+// Simulated AJAX Promise function
+function sendDataToServer(name) {
+    return new Promise((resolve, reject) => {
+        document.getElementById("p1").innerText = "⏳ Sending data to server...";
+
+        // Simulate a delay like a real AJAX call
+        setTimeout(() => {
+            if (name.toLowerCase() === "error") {
+                reject("❌ Server Error: Invalid name received!");
+            } else {
+                resolve("✅ Server Response: Name received successfully — " + name);
+            }
+        }, 1000);
+    });
+}
+
+function validate() {
+    let ele = document.getElementById("t1");
+
+    // Only predefined validation is used here
+    if (ele.checkValidity()) {
+        // If valid, call Ajax Promise
+        sendDataToServer(ele.value)
+            .then(response => {
+                document.getElementById("p1").innerText = response;
+            })
+            .catch(error => {
+                document.getElementById("p1").innerText = error;
+            });
+    } else {
+        // If invalid, display browser’s predefined validation message
+        document.getElementById("p1").innerText = ele.validationMessage;
+    }
+}
+</script>
+
+</body>
+</html>

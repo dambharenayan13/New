@@ -1,0 +1,52 @@
+<html>
+<body>
+
+Enter a Name:
+<input type="text" id="t1">
+<button onclick="validate()">Display</button>
+
+<p id="p1">Data</p>
+
+<script>
+// Function to simulate Ajax call using Promise
+function sendDataToServer(name) {
+    return new Promise((resolve, reject) => {
+        // Simulating network delay
+        setTimeout(() => {
+            if (name.toLowerCase() === "error") {
+                reject("Server Error: Invalid name received!");
+            } else {
+                resolve("✅ Server received the name: " + name);
+            }
+        }, 1000);
+    });
+}
+
+function validate() {
+    let d = document.getElementById("t1").value.trim();
+
+    // Custom validation (no predefined)
+    if (d === "") {
+        document.getElementById("p1").innerText = "⚠️ Please enter your name!";
+        return;
+    } else if (d.length < 2) {
+        document.getElementById("p1").innerText = "⚠️ Name must be at least 2 characters!";
+        return;
+    }
+
+    // Show loading message while "sending"
+    document.getElementById("p1").innerText = "⏳ Sending data to server...";
+
+    // Using Promise (Ajax simulation)
+    sendDataToServer(d)
+        .then(response => {
+            document.getElementById("p1").innerText = response;
+        })
+        .catch(error => {
+            document.getElementById("p1").innerText = error;
+        });
+}
+</script>
+
+</body>
+</html>
