@@ -1,0 +1,92 @@
+FACTORIAL OF A  NUMBER 
+
+#!/bin/bash
+echo "Enter a number:"
+read n
+fact=1
+
+for (( i=1; i<=n; i++ ))
+do
+  fact=$((fact * i))
+done
+
+echo "Factorial of $n is $fact"
+
+
+FIBONACCI SERIES
+
+#!/bin/bash
+echo "Enter the number of terms:"
+read n
+
+a=0
+b=1
+
+echo "Fibonacci Series:"
+for (( i=0; i<n; i++ ))
+do
+  echo -n "$a "
+  fn=$((a + b))
+  a=$b
+  b=$fn
+done
+echo
+
+
+SUM OF TWO NUMBERS 
+
+#!/bin/bash
+echo "Enter first number:"
+read a
+echo "Enter second number:"
+read b
+
+sum=$((a + b))
+echo "Sum is: $sum"
+
+
+LARGEST OF THREE NUMBERS
+
+#!/bin/bash
+echo "Enter three numbers:"
+read a b c
+
+if [ $a -ge $b ] && [ $a -ge $c ]
+then
+  echo "$a is the largest"
+elif [ $b -ge $a ] && [ $b -ge $c ]
+then
+  echo "$b is the largest"
+else
+  echo "$c is the largest"
+fi
+
+
+CHECK EVEN OR ODD
+
+#!/bin/bash
+echo "Enter a number:"
+read n
+
+if (( n % 2 == 0 ))
+then
+  echo "$n is Even"
+else
+  echo "$n is Odd"
+fi
+
+REVERSE A NUMBER 
+
+#!/bin/bash
+echo "Enter a number:"
+read n
+
+rev=0
+while [ $n -gt 0 ]
+do
+  rem=$((n % 10))
+  rev=$((rev * 10 + rem))
+  n=$((n / 10))
+done
+
+echo "Reversed number is $rev"
